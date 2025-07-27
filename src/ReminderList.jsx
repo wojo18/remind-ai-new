@@ -1,10 +1,13 @@
 export default function ReminderList({ reminders }) {
+  if (reminders.length === 0) {
+    return <p className="p-4 text-center text-gray-500">Brak przypomnień</p>;
+  }
+
   return (
-    <ul className="p-4 space-y-2">
-      {reminders.map((reminder, index) => (
-        <li key={index} className="p-2 border rounded shadow">
-          <div className="font-bold">{reminder.text}</div>
-          <div className="text-sm text-gray-600">{new Date(reminder.datetime).toLocaleString()}</div>
+    <ul className="p-4">
+      {reminders.map((reminder) => (
+        <li key={reminder.id} className="border-b py-2">
+          {reminder.text}
         </li>
       ))}
     </ul>
